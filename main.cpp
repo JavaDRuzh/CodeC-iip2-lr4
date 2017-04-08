@@ -2,41 +2,54 @@
 #include <cstdlib>
 #include <ctime>
 
-struct list
-{
+struct list {
     float val;
-
-    list *head;
-    list *cure;
     list *next;
-    list *prev;
+
 };
 
-void show(list *head){
+void show(list *head) {
     list *cure = head;
-    while (cure != NULL){
-        printf("%f ", cure -> val);
-        cure = cure -> next;
+    while (cure != NULL) {
+        printf("%f ", cure->val);
+        cure = cure->next;
     }
     printf("\n");
 }
 
-int getSizeArr() {
-    int sizeArr;
-    printf("How many structures to add: ");
-    scanf("%d", &sizeArr);
-    return sizeArr;
+
+float getValue() {
+    float val;
+    printf("Enter float value: ");
+    scanf("%f", &val);
+    return val;
 }
 
-int main() {
-    int N = getSizeArr();
-    list *head;
-    head ->val = 1;
-    list *cure = head;
-    for (int i = 0; i < N; i++){
-        cure -> val =i*0.5;
-        cure = cure -> next;
-    }
-    show(head);
-    return 0;
+int getSizeList() {
+    int sizeList;
+    printf("Enter size list: ");
+    scanf("%d", &sizeList);
+    return sizeList;
 }
+
+
+void getList(list *head, int sizeList) {
+    head = NULL;
+    for (int i = 0; i < sizeList; i++) {
+        list *cure = new list;
+        cure->val = getValue();
+        cure->next = head;
+        head = cure;
+    }
+}
+
+
+int main() {
+    list *head;
+    int sizeList = getSizeList();
+    getList(head, sizeList);
+    show(head);
+}
+
+
+
