@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/d.ruzh/Project/CodeC/CodeC-iip2-lr4/main.cpp
+stdio.h
+-
+cstdlib
+-
+ctime
+-
+
