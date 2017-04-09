@@ -8,18 +8,25 @@ struct list {
 
 };
 
-void show(list *head) {
+void show(list *head, int sizeList) {
     list *cure = head;
-    int *linkValue = (int*)malloc(sizeof(int));
+    //int *linkValue = (int*)malloc(sizeof(int));
+    float *linkValue[sizeList];
+    float **pp = linkValue;
     int i=0;
     while (cure != NULL) {
         printf("%f ", cure->val);
-        linkValue = ((int*)&cure->val);
+        linkValue[i] = (&cure->val);
         cure = cure->next;
+        printf("%f\n", *pp[i]);
+        i++;
     }
     printf("\n");
-}
+    for (int j = 0; j<sizeList;j++){
+        printf("%f\n", *linkValue[j]);
+    }
 
+}
 
 float getValue() {
     float val;
@@ -47,29 +54,11 @@ list getList(list *head, int sizeList) {
     return *head;
 }
 
-void getLink(list *head, int sizeList,...){
-    float linkValue[sizeList];
-    list *cure = head;
-    int i = 0;
-    while (cure != NULL) {
-        linkValue[i]=cure->val;
-        cure = cure->next;
-        i++;
-
-
-
-
-    }
-
-
-
-}
-
 int main() {
     int sizeList = getSizeList();
     list *head;
     *head = getList(head, sizeList);
-    show(head);
+    show(head, sizeList);
     //getLink(head, sizeList);
 
 }
